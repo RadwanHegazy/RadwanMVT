@@ -26,7 +26,7 @@ class RequestParser:
         self.method = first_line[0]
         self.path = first_line[1]
         self.schema = first_line[2]
-        self.hostname = str_request.split('\n')[1].split(':')[-1]
+        self.hostname = str_request.split('\n')[1].split(' ')[-1]
 
         # parse data from GET method
         if self.method == 'GET' : 
