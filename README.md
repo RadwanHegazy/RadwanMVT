@@ -19,6 +19,11 @@ open the donwloaded project :
 cd RadwanMVT
 ```
 
+install require packages : 
+```
+pip install -r requirments.txt
+```
+
 Open your code editor in the project, i opened vs code
 
 ```
