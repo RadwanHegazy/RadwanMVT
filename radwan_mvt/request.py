@@ -76,10 +76,11 @@ class StaticResponse (Response):
         self.request = request
         self.content_type = self.EXTENSIONS[extension]
         super().__init__(request, template_name, context, status_code, schema, content_type, content, hostname, method, path)
-        static_path = 'static/'
         self.is_404 = False
         try : 
-            self.static_file = open(os.path.join(os.environ.get('STATIC_FOLDER') , static_path + self.request.path),'rb')
+            static_path = os.path.join(os.environ.get('CURRENT_PATH'), os.environ.get('STATIC_FOLDER') + self.request.path)
+            
+            self.static_file = open(static_path,'rb')
             self.text = f"""HTTP/1.1 200\nContent-Disposition: inline\nContent-Type: {self.content_type}\n\n"""
         except FileNotFoundError:
             self.is_404 = True
